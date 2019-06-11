@@ -4,7 +4,9 @@ const fs = require('fs');
 const util = require('util');
 
 const mergeCsv = [];
-const websites = []; // to be added
+const websites = [
+
+]; // to be added
 
 const constructCsvRow = (website, callback) => {
   let csvRows = '';
@@ -44,7 +46,7 @@ Promise.all(mergeCsv)
   .then((csvRows) => {
     csvRows.unshift(`"website","application","type","first seen date","last seen date"\n`);
     const csv = csvRows.join('');
-    const csvName = `/output/${websites[0]}_report_${Date.now()}.csv`;
+    const csvName = `${websites[0]}_report_${Date.now()}.csv`;
     let writeStream = fs.createWriteStream(csvName);
 
     // write to file
